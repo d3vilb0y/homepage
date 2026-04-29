@@ -499,6 +499,26 @@ h1 {
   color: var(--muted-2);
 }
 
+.meta-ok {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--ok);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.meta-ok::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 8px var(--ok);
+}
+
 .link {
   font-family: var(--mono);
   font-size: 0.85rem;
