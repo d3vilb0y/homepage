@@ -3,43 +3,194 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A simple onepager deployed on Cloudflare." />
-  <title>Hello — Onepager</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>" />
+  <meta name="description" content="Personal onepager — bio, projects, and interests." />
+  <title>// nodename — onepager</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>◢</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <main>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="glow glow-1" aria-hidden="true"></div>
+  <div class="glow glow-2" aria-hidden="true"></div>
+
+  <nav class="nav">
+    <a href="#top" class="brand">
+      <span class="brand-mark">◢</span>
+      <span class="brand-name">nodename<span class="cursor">_</span></span>
+    </a>
+    <ul>
+      <li><a href="#bio">// bio</a></li>
+      <li><a href="#projects">// projects</a></li>
+      <li><a href="#interests">// interests</a></li>
+    </ul>
+  </nav>
+
+  <main id="top">
+
     <section class="hero">
-      <p class="eyebrow">Hello, world</p>
-      <h1>A simple onepager,<br />served from the edge.</h1>
+      <p class="eyebrow">
+        <span class="dot"></span> system online · 2026
+      </p>
+      <h1>
+        building <span class="hl">quiet machines</span><br />
+        for a loud <span class="hl alt">future</span>.
+      </h1>
       <p class="lede">
-        This page is a single static HTML file deployed to Cloudflare Pages.
-        Fast, free, and globally distributed by default.
+        Engineer · tinkerer · perpetual student. I design software that lives
+        at the edge of networks, hardware, and humans — small tools that
+        compound into something larger.
       </p>
       <div class="cta">
-        <a class="btn primary" href="#about">Learn more</a>
-        <a class="btn" href="https://developers.cloudflare.com/pages/" target="_blank" rel="noopener">Cloudflare Pages</a>
+        <a class="btn primary" href="#projects">
+          <span>view.projects()</span><span class="arrow">→</span>
+        </a>
+        <a class="btn ghost" href="#bio">
+          <span>read.bio()</span>
+        </a>
+      </div>
+      <div class="stat-row">
+        <div><span class="stat-num">12+</span><span class="stat-label">years shipping</span></div>
+        <div><span class="stat-num">∞</span><span class="stat-label">side quests</span></div>
+        <div><span class="stat-num">42</span><span class="stat-label">repos online</span></div>
       </div>
     </section>
 
-    <section id="about" class="grid">
-      <article>
-        <h2>Static</h2>
-        <p>No build step required. Pure HTML and CSS, ready to ship.</p>
-      </article>
-      <article>
-        <h2>Fast</h2>
-        <p>Served from Cloudflare's global network with automatic HTTPS.</p>
-      </article>
-      <article>
-        <h2>Free</h2>
-        <p>Cloudflare Pages offers a generous free tier for personal sites.</p>
-      </article>
+    <section id="bio" class="section">
+      <header class="section-head">
+        <span class="section-tag">01</span>
+        <h2>// bio</h2>
+        <span class="section-rule"></span>
+      </header>
+      <div class="bio-grid">
+        <div class="bio-card">
+          <p>
+            I'm a software engineer with a soft spot for low-level systems,
+            distributed runtimes, and interfaces that disappear when you use
+            them. I treat code like writing — drafts, edits, the occasional
+            ruthless cut.
+          </p>
+          <p>
+            My day-to-day lives somewhere between TypeScript, Rust, and the
+            terminal. I care about latency budgets, clear error messages, and
+            documentation that respects your time.
+          </p>
+          <p>
+            Off-keyboard, I'm usually outdoors with a camera, fixing something
+            mechanical, or losing an argument to a synthesizer.
+          </p>
+        </div>
+        <aside class="bio-meta">
+          <dl>
+            <div><dt>location</dt><dd>somewhere on the grid</dd></div>
+            <div><dt>stack</dt><dd>ts · rust · go · python</dd></div>
+            <div><dt>infra</dt><dd>cloudflare · linux · k8s</dd></div>
+            <div><dt>status</dt><dd><span class="ping"></span> open to collab</dd></div>
+          </dl>
+        </aside>
+      </div>
     </section>
 
-    <footer>
-      <p>Built with <span aria-hidden="true">♥</span> · Deployed on Cloudflare</p>
+    <section id="projects" class="section">
+      <header class="section-head">
+        <span class="section-tag">02</span>
+        <h2>// projects</h2>
+        <span class="section-rule"></span>
+      </header>
+      <div class="projects">
+        <article class="project">
+          <div class="project-head">
+            <h3>nullport</h3>
+            <span class="tag">edge · rust</span>
+          </div>
+          <p>A minimal reverse proxy with first-class observability — built to
+            disappear into a network closet and never be thought about again.</p>
+          <footer>
+            <span class="meta">v0.4 · stable</span>
+            <a href="#" class="link">open →</a>
+          </footer>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>lattice</h3>
+            <span class="tag">tooling · ts</span>
+          </div>
+          <p>A tiny dependency graph visualizer that turns sprawling monorepos
+            into something you can hold in your head.</p>
+          <footer>
+            <span class="meta">v1.2 · oss</span>
+            <a href="#" class="link">open →</a>
+          </footer>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>pulsewave</h3>
+            <span class="tag">audio · dsp</span>
+          </div>
+          <p>A browser-based modular synth playground. WebAudio + a custom
+            patch language. Mostly an excuse to learn DSP properly.</p>
+          <footer>
+            <span class="meta">experimental</span>
+            <a href="#" class="link">open →</a>
+          </footer>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>this site</h3>
+            <span class="tag">static · cf pages</span>
+          </div>
+          <p>A onepager living at the edge. Pure HTML and CSS, deployed to
+            Cloudflare Pages. The source is the spec.</p>
+          <footer>
+            <span class="meta">always shipping</span>
+            <a href="#" class="link">source →</a>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <section id="interests" class="section">
+      <header class="section-head">
+        <span class="section-tag">03</span>
+        <h2>// interests</h2>
+        <span class="section-rule"></span>
+      </header>
+      <ul class="chips">
+        <li>distributed systems</li>
+        <li>edge compute</li>
+        <li>retro hardware</li>
+        <li>generative art</li>
+        <li>analog photography</li>
+        <li>modular synthesis</li>
+        <li>cli ergonomics</li>
+        <li>type theory</li>
+        <li>cyberpunk fiction</li>
+        <li>topology maps</li>
+        <li>brutalist design</li>
+        <li>cold brew</li>
+      </ul>
+      <div class="quote">
+        <p>
+          "The future is already here — it's just not very evenly distributed."
+        </p>
+        <span>— william gibson</span>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footline">
+        <span class="prompt">$</span>
+        <span class="typed">echo "thanks for stopping by."</span>
+      </div>
+      <p class="fineprint">
+        © 2026 · served from the edge · cloudflare pages
+      </p>
     </footer>
   </main>
 </body>
