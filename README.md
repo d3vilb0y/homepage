@@ -1,48 +1,42 @@
 # Homepage
 
-A simple static onepager deployable to [Cloudflare Pages](https://pages.cloudflare.com/).
+A simple static onepager served by a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using
+[static assets](https://developers.cloudflare.com/workers/static-assets/).
 
-## Files
+## Layout
 
-- `index.html` — the page
-- `styles.css` — styling
-- `wrangler.toml` — Cloudflare Pages config
-- `package.json` — `dev` and `deploy` scripts via Wrangler
+- `public/` — static files served by the Worker
+  - `index.html`
+  - `styles.css`
+- `wrangler.toml` — Worker config (binds `./public` as static assets)
+- `package.json` — `dev` and `deploy` scripts via Wrangler v4
+
+There is no Worker script — Cloudflare's Static Assets feature serves the
+files in `public/` directly.
 
 ## Local preview
-
-You can open `index.html` directly in a browser, or run a local Cloudflare-like
-dev server:
 
 ```sh
 npm install
 npm run dev
 ```
 
-## Deploy to Cloudflare
+Wrangler starts a local server (default <http://localhost:8787>) that mirrors
+the production runtime.
 
-1. Install dependencies and authenticate with Cloudflare:
+## Deploy
 
-   ```sh
-   npm install
-   npx wrangler login
-   ```
+```sh
+npm install
+npx wrangler login
+npm run deploy
+```
 
-2. Deploy:
+The first deploy creates a Worker named `homepage` and uploads the contents of
+`public/`. The site goes live at `https://homepage.<your-subdomain>.workers.dev`.
 
-   ```sh
-   npm run deploy
-   ```
+### CI / Git deploys
 
-   Wrangler will create the Pages project on first run and upload the static
-   files. The site will be live at `https://homepage.pages.dev` (or your
-   chosen project name).
-
-### Alternative: Git integration
-
-You can also connect this repository to Cloudflare Pages via the dashboard:
-
-- **Build command:** *(leave empty)*
-- **Output directory:** `/`
-
-Every push to the configured branch will trigger a deploy.
+If you've connected this repo to a Cloudflare **Workers** project (Workers
+Builds), the build system runs `wrangler deploy` on every push — `wrangler.toml`
+takes care of the rest. Leave the build command empty.

@@ -2,12 +2,12 @@
   "name": "homepage",
   "version": "1.0.0",
   "private": true,
-  "description": "A simple static onepager deployed to Cloudflare Pages.",
+  "description": "A simple static onepager served by a Cloudflare Worker.",
   "scripts": {
-    "dev": "wrangler pages dev .",
-    "deploy": "wrangler pages deploy ."
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
   },
   "devDependencies": {
-    "wrangler": "^3.0.0"
+    "wrangler": "^4.0.0"
   }
 }
