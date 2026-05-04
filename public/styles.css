@@ -12,7 +12,6 @@
   --accent-2: #ff2bd6;
   --accent-3: #b48bff;
   --warn: #ffb84d;
-  --ok: #5dffaa;
 
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --sans: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -77,11 +76,11 @@ body::before {
   width: 520px;
   height: 520px;
   border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.45;
+  filter: blur(140px);
+  opacity: 0.22;
   pointer-events: none;
   z-index: -1;
-  animation: float 18s ease-in-out infinite;
+  animation: float 22s ease-in-out infinite;
 }
 .glow-1 { background: var(--accent); top: -120px; right: -80px; }
 .glow-2 { background: var(--accent-2); bottom: -160px; left: -100px; animation-delay: -9s; }
@@ -173,33 +172,12 @@ main {
 }
 
 .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
   font-family: var(--mono);
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.75rem;
-  color: var(--muted);
-  margin: 0 0 1.5rem;
-  padding: 0.4rem 0.8rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: rgba(15, 18, 32, 0.6);
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--ok);
-  box-shadow: 0 0 10px var(--ok);
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.55; transform: scale(0.85); }
+  letter-spacing: 0.22em;
+  font-size: 0.78rem;
+  color: var(--muted-2);
+  margin: 0 0 1.75rem;
 }
 
 h1 {
@@ -402,17 +380,6 @@ h1 {
 }
 .bio-meta dd { margin: 0; color: var(--text); }
 
-.ping {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--ok);
-  box-shadow: 0 0 8px var(--ok);
-  margin-right: 0.4rem;
-  animation: pulse 1.6s ease-in-out infinite;
-}
-
 /* Projects */
 .projects {
   display: grid;
@@ -497,26 +464,6 @@ h1 {
   font-family: var(--mono);
   font-size: 0.75rem;
   color: var(--muted-2);
-}
-
-.meta-ok {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  color: var(--ok);
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.meta-ok::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--ok);
-  box-shadow: 0 0 8px var(--ok);
 }
 
 .link {
