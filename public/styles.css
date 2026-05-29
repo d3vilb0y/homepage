@@ -137,9 +137,10 @@ nav a {
 
 nav a:hover { color: var(--text); }
 
-@media (max-width: 480px) {
-  nav { gap: 1rem; }
-  nav a { font-size: 0.8rem; }
+@media (max-width: 560px) {
+  nav { gap: 0.9rem; }
+  nav a { font-size: 0.78rem; }
+  nav a.external { display: none; } /* keep GitHub link in the intro on mobile */
 }
 
 /* =========================================================================
@@ -202,7 +203,55 @@ h1 em {
   font-size: clamp(1.05rem, 1.6vw, 1.15rem);
   color: var(--text-dim);
   max-width: 56ch;
+  margin: 0 0 2rem;
+}
+
+/* =========================================================================
+   Elsewhere links
+   ========================================================================= */
+
+.links {
+  list-style: none;
   margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+}
+
+.links a {
+  color: var(--text);
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: 0.15rem;
+  transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+
+.links a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.ext-mark {
+  display: inline-block;
+  margin-left: 0.25rem;
+  color: var(--text-faint);
+  font-size: 0.85em;
+  transition: transform 0.2s var(--ease), color 0.15s var(--ease);
+}
+
+a:hover .ext-mark,
+.links a:hover .ext-mark {
+  color: var(--accent);
+  transform: translate(2px, -2px);
+}
+
+/* External nav item */
+nav a.external {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
 }
 
 /* =========================================================================
@@ -349,6 +398,13 @@ h2 .num {
   font-size: 0.8rem;
   color: var(--text-faint);
 }
+
+.site-footer a {
+  color: var(--text-dim);
+  transition: color 0.15s var(--ease);
+}
+
+.site-footer a:hover { color: var(--text); }
 
 /* =========================================================================
    Reduced motion
