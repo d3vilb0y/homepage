@@ -3,259 +3,187 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="d3vilb0y — cybersecurity engineer based in Jönköping, Sweden." />
-  <title>// d3vilb0y — sec engineer</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>◢</text></svg>" />
+  <meta name="description" content="d3vilb0y — cybersecurity engineer in Jönköping, Sweden. Security architecture, Zero Trust, F5, WAF, DDoS, Zscaler, Check Point, Cisco." />
+  <title>d3vilb0y — cybersecurity engineer</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230a0a0a%22/><text y=%22.92em%22 font-size=%2284%22 fill=%22%23ededed%22 font-family=%22monospace%22 font-weight=%22600%22>d</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <div class="grid-bg" aria-hidden="true"></div>
-  <div class="scanlines" aria-hidden="true"></div>
-  <div class="glow glow-1" aria-hidden="true"></div>
-  <div class="glow glow-2" aria-hidden="true"></div>
+  <a href="#main" class="skip">Skip to content</a>
 
-  <nav class="nav">
-    <a href="#top" class="brand">
-      <span class="brand-mark">◢</span>
-      <span class="brand-name">d3vilb0y<span class="cursor">_</span></span>
-    </a>
-    <ul>
-      <li><a href="#bio">// bio</a></li>
-      <li><a href="#expertise">// expertise</a></li>
-      <li><a href="#interests">// interests</a></li>
-    </ul>
-  </nav>
+  <header class="site-header">
+    <div class="row">
+      <a href="#top" class="brand" id="top">d3vilb0y</a>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#interests">Interests</a>
+      </nav>
+    </div>
+  </header>
 
-  <main id="top">
+  <main id="main">
 
-    <section class="hero">
-      <p class="eyebrow">Jönköping · Sweden</p>
+    <section class="intro">
+      <p class="kicker">Jönköping · Sweden</p>
       <h1>
-        keeping threats <span class="hl">out</span><br />
-        and traffic <span class="hl alt">flowing</span>.
+        Cybersecurity engineer building
+        <em>defence in depth</em>.
       </h1>
       <p class="lede">
-        Cybersecurity engineer working across security architecture, Zero Trust,
-        and the perimeter — F5 · WAF · DDoS · Zscaler · Check Point · Cisco.
-        I think in layers: identity and posture drive access at every one of
-        them. Defence in depth isn't a slogan, it's a budget.
+        I work across security architecture, Zero Trust, and the perimeter —
+        F5, WAF, DDoS, Zscaler, Check Point, Cisco. Identity and posture
+        drive access at every layer.
       </p>
-      <div class="cta">
-        <a class="btn primary" href="#expertise">
-          <span>view.expertise()</span><span class="arrow">→</span>
-        </a>
-        <a class="btn ghost" href="#bio">
-          <span>read.bio()</span>
-        </a>
-      </div>
-      <div class="stat-row">
-        <div><span class="stat-num">10+</span><span class="stat-label">technologies</span></div>
-        <div><span class="stat-num">0ms</span><span class="stat-label">downtime tolerance</span></div>
-        <div><span class="stat-num">2</span><span class="stat-label">cats on staff</span></div>
-      </div>
     </section>
 
-    <section id="bio" class="section">
-      <header class="section-head">
-        <span class="section-tag">01</span>
-        <h2>// bio</h2>
-        <span class="section-rule"></span>
-      </header>
-      <div class="bio-grid">
-        <div class="bio-card">
-          <p>
-            I'm a cybersecurity engineer based in Jönköping, Sweden. My world
-            covers security architecture and defence in depth — from the edge
-            (F5, WAF, DDoS, bot protection) through Zero Trust access with
-            Zscaler, down to firewall policy on Check Point and switching on
-            Cisco.
-          </p>
-          <p>
-            On the systems side: Linux admin, Windows Server, and Veeam backup.
-            If it needs to stay up and stay secure, that's my territory. I'm
-            drawn to problems where the failure mode is both a security event
-            and a business event at the same time — and I'd rather design a
-            layer out than firefight one in.
-          </p>
-          <p>
-            Off the clock I'm building a life in Jönköping — house on the way,
-            wife, one kid, and two cats with very strong opinions about
-            unattended keyboards.
-          </p>
-        </div>
-        <aside class="bio-meta">
-          <dl>
-            <div><dt>location</dt><dd>Jönköping, Sweden</dd></div>
-            <div><dt>focus</dt><dd>sec architecture · zero trust</dd></div>
-            <div><dt>edge</dt><dd>f5 · waf · ddos · cloudflare</dd></div>
-            <div><dt>access</dt><dd>zscaler · check point · cisco</dd></div>
-            <div><dt>systems</dt><dd>linux · windows server · veeam</dd></div>
-            <div><dt>off-hours</dt><dd>house build · family · cats</dd></div>
-          </dl>
-        </aside>
-      </div>
-    </section>
+    <section id="about" class="block" aria-labelledby="about-heading">
+      <h2 id="about-heading">
+        <span class="num">01</span>
+        About
+      </h2>
 
-    <section id="expertise" class="section">
-      <header class="section-head">
-        <span class="section-tag">02</span>
-        <h2>// expertise</h2>
-        <span class="section-rule"></span>
-      </header>
-      <div class="projects">
-        <article class="project">
-          <div class="project-head">
-            <h3>Security Architecture</h3>
-            <span class="tag">design · defence in depth</span>
-          </div>
-          <p>Designing layered controls across edge, network, identity,
-            endpoint, and data — with identity and device posture as the
-            decision plane at every layer. Threat modelling, control mapping,
-            and the unglamorous work of making sure no single control is
-            load-bearing.</p>
-          <footer>
-            <span class="meta">NIST · ISO 27001 · MITRE ATT&amp;CK</span>
-          </footer>
-        </article>
-
-        <article class="project">
-          <div class="project-head">
-            <h3>Zero Trust &amp; Zscaler</h3>
-            <span class="tag">ztna · sse · sase</span>
-          </div>
-          <p>Identity- and posture-driven access at every layer with Zscaler
-            ZIA &amp; ZPA — replacing flat VPNs with per-app policy gated on
-            who you are <em>and</em> the state of your device. Never trust,
-            always verify, and assume the network is already hostile (because
-            it is).</p>
-          <footer>
-            <span class="meta">Zscaler ZIA · ZPA · ZDX</span>
-          </footer>
-        </article>
-
-        <article class="project">
-          <div class="project-head">
-            <h3>F5 &amp; Load Balancing</h3>
-            <span class="tag">adc · ltm · gtm</span>
-          </div>
-          <p>Application delivery, load balancing, SSL offload, and iRules.
-            Distributing traffic across pools without anyone noticing — the
-            best kind of infrastructure.</p>
-          <footer>
-            <span class="meta">BIG-IP · LTM · GTM</span>
-          </footer>
-        </article>
-
-        <article class="project">
-          <div class="project-head">
-            <h3>WAF &amp; Bot Protection</h3>
-            <span class="tag">layer 7 · asm · awaf</span>
-          </div>
-          <p>Policy-based Layer 7 defence — blocking injections, scraping,
-            credential stuffing, and automated threats before they reach the
-            application.</p>
-          <footer>
-            <span class="meta">F5 ASM · AWAF · Cloudflare</span>
-          </footer>
-        </article>
-
-        <article class="project">
-          <div class="project-head">
-            <h3>DDoS Mitigation</h3>
-            <span class="tag">volumetric · l3–l7</span>
-          </div>
-          <p>Volumetric and application-layer attack defence. Rate limiting,
-            traffic scrubbing, and behavioural analysis — keeping services
-            alive when things get loud.</p>
-          <footer>
-            <span class="meta">F5 AFM · upstream scrubbing</span>
-          </footer>
-        </article>
-
-        <article class="project">
-          <div class="project-head">
-            <h3>Firewalls &amp; Switching</h3>
-            <span class="tag">checkpoint · cisco</span>
-          </div>
-          <p>Check Point gateway policy, VPN, and IPS. Cisco switching and
-            firewall configuration. Network segmentation that actually
-            means something.</p>
-          <footer>
-            <span class="meta">Check Point · Cisco IOS</span>
-          </footer>
-        </article>
-
-        <article class="project">
-          <div class="project-head">
-            <h3>Linux &amp; Systems</h3>
-            <span class="tag">linux · bash · hardening</span>
-          </div>
-          <p>Server administration, hardening, and automation on Linux and
-            Windows Server. I'm comfortable in a terminal at 2 AM when
-            something breaks.</p>
-          <footer>
-            <span class="meta">RHEL · Debian · WinServer</span>
-          </footer>
-        </article>
-
-        <article class="project">
-          <div class="project-head">
-            <h3>Backup &amp; Recovery</h3>
-            <span class="tag">veeam · bcdr</span>
-          </div>
-          <p>Veeam-based backup strategy, recovery testing, and retention
-            policy. Because a backup you haven't tested is just a
-            false sense of security.</p>
-          <footer>
-            <span class="meta">Veeam B&amp;R</span>
-          </footer>
-        </article>
-      </div>
-    </section>
-
-    <section id="interests" class="section">
-      <header class="section-head">
-        <span class="section-tag">03</span>
-        <h2>// interests</h2>
-        <span class="section-rule"></span>
-      </header>
-      <ul class="chips">
-        <li>security architecture</li>
-        <li>zero trust</li>
-        <li>identity-driven access</li>
-        <li>device posture</li>
-        <li>defence in depth</li>
-        <li>sase &amp; sse</li>
-        <li>network security</li>
-        <li>ddos research</li>
-        <li>threat intelligence</li>
-        <li>linux hardening</li>
-        <li>homelab tinkering</li>
-        <li>house projects</li>
-        <li>fatherhood</li>
-        <li>cats (obviously)</li>
-        <li>fika</li>
-      </ul>
-      <div class="quote">
+      <div class="prose">
         <p>
-          "Security is always excessive until the day it is not enough."
+          I'm a cybersecurity engineer based in Jönköping, Sweden. My work
+          covers security architecture and defence in depth — from the edge
+          (F5, WAF, DDoS, bot protection), through Zero Trust access with
+          Zscaler, down to firewall policy on Check Point and switching on
+          Cisco.
         </p>
-        <span>— Rabindranath Tagore</span>
+        <p>
+          On the systems side: Linux, Windows Server, and Veeam. If it
+          needs to stay up <em>and</em> stay secure, that's my territory.
+          I'm drawn to problems where the failure mode is both a security
+          event and a business event at the same time — and I'd rather
+          design a layer out than firefight one in.
+        </p>
+        <p>
+          Off-keyboard, I'm building a life in Jönköping. House on the way,
+          wife, one kid, and two cats with strong opinions about
+          unattended keyboards.
+        </p>
       </div>
+
+      <dl class="stack">
+        <dt>Edge</dt>
+        <dd>F5 · WAF · DDoS · Bot protection · Cloudflare</dd>
+        <dt>Access</dt>
+        <dd>Zscaler ZIA &amp; ZPA · Check Point · Cisco</dd>
+        <dt>Systems</dt>
+        <dd>Linux · Windows Server · Veeam</dd>
+        <dt>Frameworks</dt>
+        <dd>NIST · ISO 27001 · MITRE ATT&amp;CK</dd>
+      </dl>
     </section>
 
-    <footer class="site-footer">
-      <div class="footline">
-        <span class="prompt">$</span>
-        <span class="typed">echo "thanks for stopping by."</span>
-      </div>
-      <p class="fineprint">
-        © 2026 · d3vilb0y · Jönköping, Sweden · served from the edge
+    <section id="work" class="block" aria-labelledby="work-heading">
+      <h2 id="work-heading">
+        <span class="num">02</span>
+        Work
+      </h2>
+
+      <ol class="work">
+        <li>
+          <h3>Security Architecture</h3>
+          <p>
+            Designing layered controls across edge, network, identity,
+            endpoint, and data — with identity and device posture as the
+            decision plane at every layer. Threat modelling, control
+            mapping, and the unglamorous work of making sure no single
+            control is load-bearing.
+          </p>
+          <p class="tags">Design · Defence in depth · Threat modelling</p>
+        </li>
+
+        <li>
+          <h3>Zero Trust &amp; Zscaler</h3>
+          <p>
+            Identity- and posture-driven access at every layer with
+            Zscaler ZIA and ZPA — replacing flat VPNs with per-app policy
+            gated on who you are and the state of your device. Never
+            trust, always verify.
+          </p>
+          <p class="tags">ZTNA · SSE · SASE</p>
+        </li>
+
+        <li>
+          <h3>F5 &amp; Load Balancing</h3>
+          <p>
+            Application delivery, load balancing, SSL offload, and iRules.
+            Distributing traffic across pools without anyone noticing —
+            the best kind of infrastructure.
+          </p>
+          <p class="tags">BIG-IP · LTM · GTM</p>
+        </li>
+
+        <li>
+          <h3>WAF &amp; Bot Protection</h3>
+          <p>
+            Policy-based Layer 7 defence — blocking injections, scraping,
+            credential stuffing, and automated threats before they reach
+            the application.
+          </p>
+          <p class="tags">F5 ASM · AWAF · Cloudflare</p>
+        </li>
+
+        <li>
+          <h3>DDoS Mitigation</h3>
+          <p>
+            Volumetric and application-layer attack defence. Rate
+            limiting, traffic scrubbing, and behavioural analysis —
+            keeping services alive when things get loud.
+          </p>
+          <p class="tags">F5 AFM · Upstream scrubbing</p>
+        </li>
+
+        <li>
+          <h3>Firewalls &amp; Switching</h3>
+          <p>
+            Check Point gateway policy, VPN, and IPS. Cisco switching and
+            firewall configuration. Network segmentation that actually
+            means something.
+          </p>
+          <p class="tags">Check Point · Cisco IOS</p>
+        </li>
+
+        <li>
+          <h3>Systems &amp; Recovery</h3>
+          <p>
+            Linux and Windows Server administration, hardening, and
+            automation. Veeam-based backup strategy with recovery
+            testing — because a backup you haven't tested is just a
+            false sense of security.
+          </p>
+          <p class="tags">RHEL · Debian · WinServer · Veeam B&amp;R</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="interests" class="block" aria-labelledby="interests-heading">
+      <h2 id="interests-heading">
+        <span class="num">03</span>
+        Interests
+      </h2>
+      <p class="prose">
+        Security architecture, Zero Trust, defence in depth,
+        identity-driven access, device posture, SASE and SSE, network
+        security, DDoS research, threat intelligence, Linux hardening,
+        homelab tinkering. Off-hours: the house project, family,
+        two cats, and fika.
       </p>
-    </footer>
+    </section>
+
   </main>
+
+  <footer class="site-footer">
+    <div class="row">
+      <span>d3vilb0y · Jönköping, Sweden</span>
+      <span>© 2026</span>
+    </div>
+  </footer>
 </body>
 </html>
