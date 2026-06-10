@@ -44,6 +44,9 @@ html {
 body {
   margin: 0;
   background: var(--bg);
+  /* Static dot grid — barely there, no animation */
+  background-image: radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
   color: var(--text);
   font-family: var(--sans);
   font-weight: 400;
@@ -124,6 +127,17 @@ a {
   vertical-align: 1px;
 }
 
+.brand::after {
+  content: "_";
+  color: var(--accent);
+  margin-left: 0.1rem;
+  animation: caret 1.2s steps(2, start) infinite;
+}
+
+@keyframes caret {
+  to { visibility: hidden; }
+}
+
 nav {
   display: flex;
   gap: 1.5rem;
@@ -173,14 +187,9 @@ main {
   margin: 0 0 1.5rem;
 }
 
-.kicker::before {
-  content: "";
-  display: inline-block;
-  width: 1.5rem;
-  height: 1px;
-  background: var(--text-faint);
-  vertical-align: middle;
-  margin-right: 0.75rem;
+.prompt {
+  color: var(--accent);
+  margin-right: 0.35rem;
 }
 
 h1 {
@@ -204,6 +213,28 @@ h1 em {
   color: var(--text-dim);
   max-width: 56ch;
   margin: 0 0 2rem;
+}
+
+/* Current role — status line */
+.now {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--text);
+  margin: 0 0 2rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--accent);
+  background: var(--surface);
+}
+
+.now-key {
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
 }
 
 /* =========================================================================
@@ -279,6 +310,22 @@ h2 .num {
   letter-spacing: 0.04em;
 }
 
+h2 .num::before { content: "["; }
+h2 .num::after { content: "]"; }
+
+h2 .path {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 400;
+  color: var(--text-faint);
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 480px) {
+  h2 .path { display: none; }
+}
+
 /* =========================================================================
    Prose
    ========================================================================= */
@@ -341,15 +388,36 @@ h2 .num {
   list-style: none;
   padding: 0;
   margin: 0;
+  counter-reset: work;
 }
 
 .work li {
+  counter-increment: work;
   padding: 1.75rem 0;
   border-top: 1px solid var(--border);
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.65rem;
+  grid-template-columns: 3rem 1fr;
+  gap: 0.65rem 0;
   transition: padding-left 0.25s var(--ease);
+}
+
+.work li::before {
+  content: counter(work, decimal-leading-zero);
+  grid-column: 1;
+  grid-row: 1;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  line-height: 1.9;
+  transition: color 0.15s var(--ease);
+}
+
+.work li:hover::before {
+  color: var(--accent);
+}
+
+.work li > * {
+  grid-column: 2;
 }
 
 .work li:last-child {
@@ -358,6 +426,10 @@ h2 .num {
 
 .work li:hover {
   padding-left: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .work li { grid-template-columns: 2.4rem 1fr; }
 }
 
 .work h3 {
@@ -405,6 +477,13 @@ h2 .num {
 }
 
 .site-footer a:hover { color: var(--text); }
+
+.site-footer .eof {
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+}
+
+.site-footer .eof::before { content: "// "; }
 
 /* =========================================================================
    Reduced motion

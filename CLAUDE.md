@@ -33,13 +33,13 @@ A previous iteration was set up as Cloudflare Pages and failed in CI with: *"It 
 
 The current design is intentionally restrained — type-driven hierarchy, monochrome with a single muted accent, hairline rules instead of card surfaces. When making changes, preserve these rules:
 
-- **One accent.** `--accent` (cyan-300) is used only for `<em>` inside the h1, `:focus-visible` rings, and `::selection`. Don't reintroduce gradient text, gradient buttons, or multi-accent palettes.
-- **Mono is for technical bits only** — kicker, nav, brand, section number (`.num`), stack `<dt>`, work `.tags`, footer. Body copy is Space Grotesk.
+- **One accent.** `--accent` (cyan-300) is used only for `<em>` inside the h1, the `~$` prompt, the brand caret, the `.now` left border, hovered work-row numbers, `:focus-visible` rings, and `::selection`. Don't reintroduce gradient text, gradient buttons, or multi-accent palettes.
+- **Mono is for technical bits only** — kicker, nav, brand, section number (`.num`), section path (`.path`), `.now` line, stack `<dt>`, work `.tags`, footer. Body copy is Space Grotesk.
 - **Single column, ~720px content width** (`--content-width`). The sticky header, main, and footer all share `.row` as the centered container.
-- **Hairlines, not boxes.** Sections separate with 1px `--border` rules under `h2`. Work entries are `<li>` rows with top borders, no cards. The only hover motion is `.work li` shifting 8px right.
-- **No ambient effects.** No scanlines, animated grids, drifting glows, or pulsing dots. No status pills.
+- **Hairlines, not boxes.** Sections separate with 1px `--border` rules under `h2`. Work entries are `<li>` rows with top borders, no cards. The only hover motion is `.work li` shifting 8px right (its leading number turns accent).
+- **Terminal flavor, kept quiet.** The techie touches are: a `~$ whoami` kicker, a blinking caret on the header brand (the only animation; respects reduced-motion), bracketed section indices (`[01]`) with a faint `~/section` path on the right, CSS-counter numbering on work rows, a `.now` status line for the current role, an `EOF` mark in the footer, and a static dot grid on `body` (no animated backgrounds, scanlines, or glows).
 - Section headings are `<h2>` with a small mono `.num` ("01", "02", "03") preceding the name. Anchors are `#about`, `#work`, `#interests`.
-- The site owner is **d3vilb0y**, a cybersecurity engineer in Jönköping, Sweden. Tone is terse, professional, lowercase-friendly. Keep it that way unless asked otherwise.
+- The site owner is **Ted Nordvall** (handle **d3vilb0y**), a cybersecurity engineer in Jönköping, Sweden, currently Product Specialist — Cybersecurity at Arrow ECS. Tone is terse, professional, lowercase-friendly. Keep it that way unless asked otherwise.
 
 ## Accessibility
 
