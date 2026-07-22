@@ -1,6 +1,12 @@
 name = "homepage"
 compatibility_date = "2026-04-29"
+main = "src/index.js"
 
 [assets]
 directory = "./public"
+binding = "ASSETS"
 not_found_handling = "single-page-application"
+
+# The Worker only intercepts the secret-code gate; every other request is served
+# straight from static assets with no Worker in the path.
+run_worker_first = ["/unlock"]
