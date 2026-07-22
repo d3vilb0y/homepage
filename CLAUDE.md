@@ -15,15 +15,28 @@ There is no build step, no test suite, and no linter. Static files are served as
 
 ## Architecture
 
-This is a **Cloudflare Worker** that uses the [Static Assets](https://developers.cloudflare.com/workers/static-assets/) feature to serve a single-page personal site. There is intentionally **no Worker script** — `wrangler.toml` binds `./public` as the assets directory and Cloudflare's runtime handles serving directly.
+This is a **Cloudflare Worker** that uses the [Static Assets](https://developers.cloudflare.com/workers/static-assets/) feature to serve a single-page personal site. Serving is almost entirely handled by Cloudflare's asset runtime — `wrangler.toml` binds `./public` as the assets directory. A **minimal Worker script** exists for one purpose only: gating a secret-code contact reveal (see "Secret-code contact gate" below).
 
-Three files do all the work:
+Key files:
 
-- `wrangler.toml` — `name = "homepage"`, `[assets] directory = "./public"`, `not_found_handling = "single-page-application"` (so unknown paths fall back to `index.html`).
+- `wrangler.toml` — `name = "homepage"`, `main = "src/index.js"`, `[assets] directory = "./public"`, `binding = "ASSETS"`, `not_found_handling = "single-page-application"` (so unknown paths fall back to `index.html`), and `run_worker_first = ["/unlock"]` so the Worker only runs for the gate path; everything else is served straight from static assets.
+- `src/index.js` — the Worker. It intercepts only `/unlock?c=<code>`; all other traffic bypasses it via `run_worker_first`.
 - `public/index.html` — the entire page content. Sections are: intro (no heading), `#about`, `#work`, `#interests`, footer. Updating personal info means editing this file.
 - `public/styles.css` — monochrome dark design system. Tokens live as CSS custom properties on `:root`: surfaces (`--bg`, `--surface`, `--border`, `--border-strong`), text (`--text`, `--text-dim`, `--text-faint`), a single `--accent`, type (`--sans`, `--mono`), layout (`--content-width`, `--gutter`), and `--ease`. Fonts (Space Grotesk + JetBrains Mono) load from Google Fonts via `<link>` in the HTML.
 
-There is no JavaScript.
+There is **no client-side JavaScript** — the page itself ships zero JS. The only script is the server-side Worker gate.
+
+## Secret-code contact gate
+
+`src/index.js` reveals contact details (email + phone) only when `/unlock?c=<code>` is requested with the correct code — the URL written to an NFC tag. On a match, the Worker fetches the normal `index.html` from the `ASSETS` binding and injects a **contact pop-up** — a dimmed-backdrop overlay with a centered card (`.reveal`) — plus its scoped `<style>` before returning the page (with `no-store` / `noindex`). The pop-up needs no client-side JS: its backdrop and `×` are links back to `/`, so navigating to the clean page dismisses it. The code and the contact details are **Worker secrets**, never committed to the repo and never present in the public HTML.
+
+Secrets (set with `wrangler secret put <NAME>`; locally, copy `.dev.vars.example` to `.dev.vars`):
+
+- `SECRET_CODE` — the code embedded in the NFC tag URL.
+- `CONTACT_EMAIL` — Arrow email to reveal.
+- `CONTACT_PHONE` — phone number to reveal.
+
+The pop-up markup and styles are injected by the Worker only in the unlocked response (they never touch `public/`), and reuse the existing design tokens/classes (`--surface`, `--border-strong`, `.kicker`, `.prompt`, `.stack`) so the reveal matches the rest of the page.
 
 ## Important: this is Workers, not Pages
 
