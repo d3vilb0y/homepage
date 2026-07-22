@@ -7,8 +7,8 @@
  * Worker overhead.
  *
  * When `/unlock?c=<code>` is hit with the correct code, the Worker pulls the
- * normal index.html from the ASSETS binding and injects a contact section
- * (email + phone) before returning it. The code, email, and phone all live in
+ * normal index.html from the ASSETS binding and injects a contact pop-up
+ * (email + phone) over the page before returning it. The code, email, and phone all live in
  * Worker secrets — never in the repo and never in the public HTML — so the
  * contact details are absent from the site unless the correct code is given.
  *
@@ -45,26 +45,59 @@ async function renderUnlocked(env, url) {
   const phone = env.CONTACT_PHONE || "";
   const telHref = phone.replace(/[^+\d]/g, "");
 
-  const block = `
-    <section id="contact" class="block" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">
-        <span class="num">04</span>
-        Contact
-        <span class="path" aria-hidden="true">~/contact</span>
-      </h2>
-      <p class="prose">
-        You tapped the tag. Here's how to reach me directly.
-      </p>
-      <dl class="stack">
-        <dt>Email</dt>
-        <dd><a href="mailto:${escapeAttr(email)}">${escapeHtml(email)}</a></dd>
-        <dt>Phone</dt>
-        <dd><a href="tel:${escapeAttr(telHref)}">${escapeHtml(phone)}</a></dd>
-      </dl>
-    </section>
-  `;
+  // A pop-up shown over the normal page — dimmed backdrop + centered card.
+  // No client-side JS: the backdrop and the × are links back to "/", which
+  // dismisses the reveal by navigating to the clean (locked) page.
+  const style = `
+    <style id="reveal-style">
+      .reveal { position: fixed; inset: 0; z-index: 1000; display: flex;
+        align-items: center; justify-content: center; padding: var(--gutter); }
+      .reveal__backdrop { position: absolute; inset: 0; display: block;
+        background: rgba(0, 0, 0, 0.72); -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px); }
+      .reveal__card { position: relative; z-index: 1; width: 100%;
+        max-width: 26rem; background: var(--surface);
+        border: 1px solid var(--border-strong); padding: 2rem 1.75rem 2.25rem;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55); }
+      .reveal__card .kicker { margin: 0 0 0.75rem; }
+      .reveal__card h2 { font-size: 1.4rem; font-weight: 500;
+        letter-spacing: -0.02em; margin: 0; color: var(--text); }
+      .reveal__card .stack { margin-top: 1.5rem; }
+      .reveal__close { position: absolute; top: 0.65rem; right: 0.85rem;
+        font-family: var(--mono); font-size: 1.35rem; line-height: 1;
+        color: var(--text-dim); text-decoration: none;
+        transition: color 0.15s var(--ease); }
+      .reveal__close:hover { color: var(--text); }
+      @media (prefers-reduced-motion: no-preference) {
+        .reveal__backdrop { animation: reveal-fade 0.28s ease both; }
+        .reveal__card { animation: reveal-in 0.28s var(--ease) both; }
+      }
+      @keyframes reveal-fade { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes reveal-in {
+        from { opacity: 0; transform: translateY(10px) scale(0.98); }
+        to { opacity: 1; transform: none; }
+      }
+    </style>`;
 
-  const injected = html.replace("</main>", `${block}\n  </main>`);
+  const popup = `
+    <div class="reveal" role="dialog" aria-modal="true" aria-labelledby="reveal-title">
+      <a class="reveal__backdrop" href="/" aria-label="Close"></a>
+      <div class="reveal__card">
+        <a class="reveal__close" href="/" aria-label="Close">&times;</a>
+        <p class="kicker"><span class="prompt" aria-hidden="true">~$</span> contact --reveal</p>
+        <h2 id="reveal-title">Ted Nordvall</h2>
+        <dl class="stack">
+          <dt>Email</dt>
+          <dd><a href="mailto:${escapeAttr(email)}">${escapeHtml(email)}</a></dd>
+          <dt>Phone</dt>
+          <dd><a href="tel:${escapeAttr(telHref)}">${escapeHtml(phone)}</a></dd>
+        </dl>
+      </div>
+    </div>`;
+
+  const injected = html
+    .replace("</head>", `${style}\n</head>`)
+    .replace("</body>", `${popup}\n</body>`);
 
   return new Response(injected, {
     headers: {

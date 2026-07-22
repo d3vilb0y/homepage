@@ -28,7 +28,7 @@ There is **no client-side JavaScript** — the page itself ships zero JS. The on
 
 ## Secret-code contact gate
 
-`src/index.js` reveals contact details (email + phone) only when `/unlock?c=<code>` is requested with the correct code — the URL written to an NFC tag. On a match, the Worker fetches the normal `index.html` from the `ASSETS` binding and injects a `#contact` section before returning it (with `no-store` / `noindex`). The code and the contact details are **Worker secrets**, never committed to the repo and never present in the public HTML.
+`src/index.js` reveals contact details (email + phone) only when `/unlock?c=<code>` is requested with the correct code — the URL written to an NFC tag. On a match, the Worker fetches the normal `index.html` from the `ASSETS` binding and injects a **contact pop-up** — a dimmed-backdrop overlay with a centered card (`.reveal`) — plus its scoped `<style>` before returning the page (with `no-store` / `noindex`). The pop-up needs no client-side JS: its backdrop and `×` are links back to `/`, so navigating to the clean page dismisses it. The code and the contact details are **Worker secrets**, never committed to the repo and never present in the public HTML.
 
 Secrets (set with `wrangler secret put <NAME>`; locally, copy `.dev.vars.example` to `.dev.vars`):
 
@@ -36,7 +36,7 @@ Secrets (set with `wrangler secret put <NAME>`; locally, copy `.dev.vars.example
 - `CONTACT_EMAIL` — Arrow email to reveal.
 - `CONTACT_PHONE` — phone number to reveal.
 
-Keep the injected `#contact` block styled with the existing design classes (`.block`, `.num`, `.path`, `.prose`, `.stack`) so the reveal matches the rest of the page.
+The pop-up markup and styles are injected by the Worker only in the unlocked response (they never touch `public/`), and reuse the existing design tokens/classes (`--surface`, `--border-strong`, `.kicker`, `.prompt`, `.stack`) so the reveal matches the rest of the page.
 
 ## Important: this is Workers, not Pages
 
