@@ -1,0 +1,29 @@
+/* NSALABB brand tokens. Generated from src/shared/brand.ts in d3vilb0y/servicerr by `npm run brand`; edit that file, not this one. */
+:root {
+  --nl-bg: #0a0b0d;
+  --nl-surface: #131a22;
+  --nl-surface-2: #1b2430;
+  --nl-line: #212c38;
+  --nl-line-strong: #34445a;
+  --nl-text: #f1efe8;
+  --nl-muted: #8d9aa8;
+  --nl-faint: #56636f;
+  --nl-accent: #e4002b;
+  --nl-accent-text: #ff3b55;
+  --nl-accent-ink: #ffffff;
+  --nl-support: #8a9a52;
+  --nl-ok: #5fd38d;
+  --nl-warn: #f6c46b;
+  --nl-danger: #ff7b85;
+  --nl-tone-ok-bg: #174c39;
+  --nl-tone-ok-ink: #b6f0d2;
+  --nl-tone-warn-bg: #54420f;
+  --nl-tone-warn-ink: #ffe39e;
+  --nl-tone-info-bg: #173a5c;
+  --nl-tone-info-ink: #bfe0ff;
+  --nl-tone-danger-bg: #5a2229;
+  --nl-tone-danger-ink: #ffc4ca;
+  --nl-font-body: "IBM Plex Sans Variable", "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --nl-font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --nl-radius: 12px;
+}

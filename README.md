@@ -7,12 +7,14 @@ A simple static onepager served by a [Cloudflare Worker](https://developers.clou
 
 - `public/` — static files served by the Worker
   - `index.html`
-  - `styles.css`
+  - `styles.css` — the page's styles, built on the NSALABB tokens
+  - `starfield.js` — the NSALABB starfield (decorative, the only client JS)
+  - `brand/` — the NSALABB brand kit, copied from d3vilb0y/servicerr `brand/`
 - `wrangler.toml` — Worker config (binds `./public` as static assets)
 - `package.json` — `dev` and `deploy` scripts via Wrangler v4
 
-There is no Worker script — Cloudflare's Static Assets feature serves the
-files in `public/` directly.
+Cloudflare's Static Assets feature serves the files in `public/` directly; the
+small Worker in `src/index.js` only handles the `/unlock` contact gate.
 
 ## Local preview
 

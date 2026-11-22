@@ -22,9 +22,11 @@ Key files:
 - `wrangler.toml` — `name = "homepage"`, `main = "src/index.js"`, `[assets] directory = "./public"`, `binding = "ASSETS"`, `not_found_handling = "single-page-application"` (so unknown paths fall back to `index.html`), and `run_worker_first = ["/unlock"]` so the Worker only runs for the gate path; everything else is served straight from static assets.
 - `src/index.js` — the Worker. It intercepts only `/unlock?c=<code>`; all other traffic bypasses it via `run_worker_first`.
 - `public/index.html` — the entire page content. Sections are: intro (no heading), `#about`, `#work`, `#interests`, footer. Updating personal info means editing this file.
-- `public/styles.css` — monochrome dark design system. Tokens live as CSS custom properties on `:root`: surfaces (`--bg`, `--surface`, `--border`, `--border-strong`), text (`--text`, `--text-dim`, `--text-faint`), a single `--accent`, type (`--sans`, `--mono`), layout (`--content-width`, `--gutter`), and `--ease`. Fonts (Space Grotesk + JetBrains Mono) load from Google Fonts via `<link>` in the HTML.
+- `public/brand/` — the NSALABB brand kit (`nsalabb.css` with the `--nl-*` tokens, `tokens.json`, `mark.svg`, `mark-paper.svg`, `app-icon.svg` as favicon, `README.md`), copied verbatim from `brand/` in d3vilb0y/servicerr, where `src/shared/brand.ts` is the source of truth. Don't edit these files here; to update, copy the folder again from servicerr.
+- `public/styles.css` — the page's design system on top of the kit. Its `:root` tokens only alias `--nl-*`: surfaces (`--bg`, `--surface`, `--border`, `--border-strong`), text (`--text`, `--text-dim`, `--text-faint`), `--accent` (red for small text, `--nl-accent-text`), `--accent-fill` (full red `--nl-accent`), `--support` (army green), type (`--sans`, `--mono`), layout (`--content-width`, `--gutter`, `--radius`), and `--ease`. Never add new hex colours. Fonts (IBM Plex Sans + IBM Plex Mono) load from Google Fonts via `<link>` in the HTML.
+- `public/starfield.js` — the NSALABB starfield, a vanilla port of servicerr's `src/shared/starfield.ts` + `src/web/Starfield.tsx`. It adds a fixed `canvas.starfield` behind the page; static under `prefers-reduced-motion`, paused in hidden tabs.
 
-There is **no client-side JavaScript** — the page itself ships zero JS. The only script is the server-side Worker gate.
+The starfield is the **only client-side JavaScript**, and it's decorative: with JS off the page is identical minus the stars. Don't add other client JS. The server-side Worker gate is the only other script.
 
 ## Secret-code contact gate
 
@@ -44,13 +46,15 @@ A previous iteration was set up as Cloudflare Pages and failed in CI with: *"It 
 
 ## Design conventions
 
-The current design is intentionally restrained — type-driven hierarchy, monochrome with a single muted accent, hairline rules instead of card surfaces. When making changes, preserve these rules:
+The page wears the NSALABB brand (direction "Rack", shared by every nsalabb.se service): matte black ground with a quiet starfield, slate surfaces, off-white ink, one F5 red accent, army green for what's running, IBM Plex type. Within that it stays restrained — type-driven hierarchy, hairline rules instead of card surfaces. When making changes, preserve these rules:
 
-- **One accent.** `--accent` (cyan-300) is used only for `<em>` inside the h1, the `~$` prompt, the brand caret, the `.now` left border, hovered work-row numbers, `:focus-visible` rings, and `::selection`. Don't reintroduce gradient text, gradient buttons, or multi-accent palettes.
-- **Mono is for technical bits only** — kicker, nav, brand, section number (`.num`), section path (`.path`), `.now` line, stack `<dt>`, work `.tags`, footer. Body copy is Space Grotesk.
+- **Wordmark.** The header brand is the rack mark plus "nsalabb" in ink and the product name "ted" in red (`nsalabb ted`). On small screens (≤560px) only the mark shows.
+- **One accent, F5 red.** `--accent` (`#ff3b55`, the red for text on dark) is used only for the product name in the wordmark, `<em>` inside the h1, the `~$` prompt, hovered work-row numbers, link hovers and `:focus-visible` rings. `--accent-fill` (`#e4002b`) is for the `.now` left border and `::selection`. Don't reintroduce gradient text, gradient buttons, or multi-accent palettes.
+- **Army green supports it.** `--support` is for the mark's quiet units, the blinking brand caret and the `.now` key with its dot (the current role is "running"). Nothing else.
+- **Mono (IBM Plex Mono) is for technical bits only** — kicker, nav, brand, section number (`.num`), section path (`.path`), `.now` line, stack `<dt>`, work `.tags`, footer. Body copy is IBM Plex Sans.
 - **Single column, ~720px content width** (`--content-width`). The sticky header, main, and footer all share `.row` as the centered container.
 - **Hairlines, not boxes.** Sections separate with 1px `--border` rules under `h2`. Work entries are `<li>` rows with top borders, no cards. The only hover motion is `.work li` shifting 8px right (its leading number turns accent).
-- **Terminal flavor, kept quiet.** The techie touches are: a `~$ whoami` kicker, a blinking caret on the header brand (the only animation; respects reduced-motion), bracketed section indices (`[01]`) with a faint `~/section` path on the right, CSS-counter numbering on work rows, a `.now` status line for the current role, an `EOF` mark in the footer, and a static dot grid on `body` (no animated backgrounds, scanlines, or glows).
+- **Terminal flavor, kept quiet.** The techie touches are: a `~$ whoami` kicker, a blinking army green caret on the header brand (the only CSS animation; respects reduced-motion), bracketed section indices (`[01]`) with a faint `~/section` path on the right, CSS-counter numbering on work rows, a `.now` status line for the current role, an `EOF` mark in the footer, and the NSALABB starfield behind everything (no constellation lines, scanlines, or glows).
 - Section headings are `<h2>` with a small mono `.num` ("01", "02", "03") preceding the name. Anchors are `#about`, `#work`, `#interests`.
 - The site owner is **Ted Nordvall** (handle **d3vilb0y**), a cybersecurity engineer in Jönköping, Sweden, currently Product Specialist — Cybersecurity at Arrow ECS. Tone is terse, professional, lowercase-friendly. Keep it that way unless asked otherwise.
 
