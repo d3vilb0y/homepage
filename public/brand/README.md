@@ -1,23 +1,26 @@
 # NSALABB brand kit
 
-The look every nsalabb.se service shares: a quiet rack under a matte black night sky, one red light on and army green beside it.
-Direction "Rack". The source is `src/shared/brand.ts`; everything else in this folder is
+The look every nsalabb.se service shares: a prompt under a matte black night sky, F5 red for the one action and army green beside it.
+The logo is concept "Prompt": an n and an amber terminal cursor. The source is `src/shared/brand.ts`; everything else in this folder is
 generated from it by `npm run brand` (and a test fails if it isn't), so don't edit these files by hand.
 
 | File | Use it for |
 | --- | --- |
 | `nsalabb.css` | CSS custom properties (`--nl-*`). Copy it into a web app and use the variables. |
 | `tokens.json` | The same values for anything that isn't CSS: another app's theme, Grafana, a dashboard config. |
-| `mark.svg` | The mark on dark backgrounds. |
-| `mark-paper.svg` | The mark on light backgrounds. |
-| `app-icon.svg` | Favicon and home-screen icon: the mark on the ground, full bleed, safe as a maskable icon. |
+| `mark.svg` | The n_ glyph on dark backgrounds, no tile. |
+| `mark-paper.svg` | The n_ glyph on light backgrounds. |
+| `app-icon.svg` | The glyph on its rounded tile. |
+| `logo/` | Ted's logo files exactly as delivered: SVG and PNG lockups, icons, `favicon.ico`, and its own README. Use these for favicons and home-screen icons. |
 
 ## Naming
 
-- The brand is **nsalabb**, always lowercase in the wordmark.
-- A product is the brand in ink followed by the product name in red: **nsalabb** *services*,
-  **nsalabb** *playgate*, **nsalabb** *share*. The mark sits to the left.
-- On small screens, show the mark alone.
+- The brand is **nsalabb**, always lowercase, written as a prompt: `nsalabb_` in JetBrains Mono 500,
+  the underscore in the cursor amber.
+- A product adds a divider and its path: `nsalabb_ | ~/services`, `~/playgate`, `~/share`
+  ("~/" in amber, the name in `--nl-logo-path`). The tile sits to the left.
+- On small screens, show the tile alone.
+- The logo keeps its own colours (`--nl-logo-*`, `logo` in `tokens.json`); the amber cursor is not the UI accent.
 
 ## Colour, and how much of it
 

@@ -1,7 +1,7 @@
 /* =========================================================================
    Ted Nordvall · nsalabb ted
-   NSALABB brand, direction "Rack": matte black night sky, slate surfaces,
-   off-white ink, one F5 red accent, army green for what's running.
+   NSALABB brand: matte black night sky, slate surfaces, off-white ink,
+   one F5 red accent, army green for what's running, the "Prompt" logo.
    The values come from /brand/nsalabb.css (the kit, copied verbatim from
    d3vilb0y/servicerr brand/); this file only aliases them. No new hex colours.
    ========================================================================= */
@@ -130,39 +130,42 @@ a {
   gap: 1rem;
 }
 
-/* Wordmark: the mark, "nsalabb" in ink, the product in red, then the caret */
+/* Logo lockup, as in every nsalabb.se service (brand/README.md): the n_ tile,
+   then "nsalabb_ | ~/bio" in JetBrains Mono 500, coloured by the --nl-logo-* tokens.
+   The amber cursor belongs to the logo, not the page accent; here it blinks. */
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-family: var(--sans);
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--text);
+  gap: 0.7em;
+  font: 500 0.98rem/1 var(--nl-font-wordmark);
+  color: var(--nl-logo-paper);
   white-space: nowrap;
 }
 
 .brand-mark {
   display: block;
   flex: none;
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
-.brand-word span {
-  color: var(--accent);
-  font-weight: 500;
-}
+.brand-word { display: inline-flex; align-items: center; }
 
-.brand::after {
-  content: "_";
-  font-family: var(--mono);
-  font-weight: 500;
-  color: var(--support);
-  margin-left: -0.35rem;
+.brand-cursor {
+  color: var(--nl-logo-cursor);
   animation: caret 1.2s steps(2, start) infinite;
 }
+
+.brand-divider {
+  display: inline-block;
+  width: 1.5px;
+  height: 1.3em;
+  margin: 0 0.75em;
+  background: var(--nl-logo-divider);
+}
+
+.brand-path { color: var(--nl-logo-path); }
+.brand-path > span { color: var(--nl-logo-cursor); }
 
 @keyframes caret {
   to { visibility: hidden; }
@@ -185,7 +188,7 @@ nav a:hover { color: var(--text); }
   nav { gap: 0.9rem; }
   nav a { font-size: 0.78rem; }
   nav a.external { display: none; } /* keep GitHub link in the intro on mobile */
-  .brand-word, .brand::after { display: none; } /* small screens show the mark alone */
+  .brand-word { display: none; } /* small screens show the tile alone */
 }
 
 /* =========================================================================
