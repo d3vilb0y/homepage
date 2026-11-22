@@ -57,7 +57,8 @@ async function renderUnlocked(env, url) {
         backdrop-filter: blur(4px); }
       .reveal__card { position: relative; z-index: 1; width: 100%;
         max-width: 26rem; background: var(--surface);
-        border: 1px solid var(--border-strong); padding: 2rem 1.75rem 2.25rem;
+        border: 1px solid var(--border-strong); border-radius: var(--radius);
+        padding: 2rem 1.75rem 2.25rem;
         box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55); }
       .reveal__card .kicker { margin: 0 0 0.75rem; }
       .reveal__card h2 { font-size: 1.4rem; font-weight: 500;
