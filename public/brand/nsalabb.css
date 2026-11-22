@@ -23,7 +23,15 @@
   --nl-tone-info-ink: #bfe0ff;
   --nl-tone-danger-bg: #5a2229;
   --nl-tone-danger-ink: #ffc4ca;
+  --nl-logo-paper: #f5f3ee;
+  --nl-logo-ink: #0d1117;
+  --nl-logo-panel: #161b22;
+  --nl-logo-cursor: #f5b342;
+  --nl-logo-cursor-deep: #a86a0c;
+  --nl-logo-divider: #3a424d;
+  --nl-logo-path: #9aa4b2;
   --nl-font-body: "IBM Plex Sans Variable", "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --nl-font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --nl-font-wordmark: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --nl-radius: 12px;
 }
