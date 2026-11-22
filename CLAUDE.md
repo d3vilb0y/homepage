@@ -48,7 +48,7 @@ A previous iteration was set up as Cloudflare Pages and failed in CI with: *"It 
 
 The page wears the NSALABB brand (direction "Rack", shared by every nsalabb.se service): matte black ground with a quiet starfield, slate surfaces, off-white ink, one F5 red accent, army green for what's running, IBM Plex type. Within that it stays restrained — type-driven hierarchy, hairline rules instead of card surfaces. When making changes, preserve these rules:
 
-- **Wordmark.** The header brand is the rack mark plus "nsalabb" in ink and the product name "ted" in red (`nsalabb ted`). On small screens (≤560px) only the mark shows.
+- **Wordmark.** The header brand is the rack mark plus "nsalabb" in ink and the product name "bio" in red (`nsalabb bio`). On small screens (≤560px) only the mark shows.
 - **One accent, F5 red.** `--accent` (`#ff3b55`, the red for text on dark) is used only for the product name in the wordmark, `<em>` inside the h1, the `~$` prompt, hovered work-row numbers, link hovers and `:focus-visible` rings. `--accent-fill` (`#e4002b`) is for the `.now` left border and `::selection`. Don't reintroduce gradient text, gradient buttons, or multi-accent palettes.
 - **Army green supports it.** `--support` is for the mark's quiet units, the blinking brand caret and the `.now` key with its dot (the current role is "running"). Nothing else.
 - **Mono (IBM Plex Mono) is for technical bits only** — kicker, nav, brand, section number (`.num`), section path (`.path`), `.now` line, stack `<dt>`, work `.tags`, footer. Body copy is IBM Plex Sans.
