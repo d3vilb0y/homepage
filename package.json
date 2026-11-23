@@ -1,6 +1,6 @@
 {
   "name": "homepage",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": true,
   "description": "A simple static onepager served by a Cloudflare Worker.",
   "scripts": {
